@@ -106,7 +106,9 @@ let db;
         ('alice123', 'alice@email.com', 'hash123', 'owner'),
         ('carol123', 'carol@email.com', 'hash789', 'owner'),
         ('bobwalker', 'bob@email.com', 'hash456', 'walker'),
-        ('newwalker', 'newwalker@email.com', 'hash4', 'walker')
+        ('newwalker', 'newwalker@email.com', 'hash', 'walker')
+        ('rafid', 'rafid@email.com', 'hash4', 'walker')
+
       `);
 
       await db.execute(`
