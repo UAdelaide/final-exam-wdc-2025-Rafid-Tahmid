@@ -19,7 +19,7 @@ let db;
     const connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '' // Set your MySQL root password
+      password: '' /
     });
 
     // Create the database if it doesn't exist (from the SQL file)
@@ -99,48 +99,7 @@ let db;
       )
     `);
 
-    // Insert sample data for testing
-    // Insert users (owners and walkers)
-    await db.execute(`
-      INSERT INTO Users (username, email, password_hash, role) VALUES
-      ('alice123', 'alice@email.com', 'hash1', 'owner'),
-      ('carol123', 'carol@email.com', 'hash2', 'owner'),
-      ('bobwalker', 'bob@email.com', 'hash3', 'walker'),
-      ('newwalker', 'newwalker@email.com', 'hash4', 'walker')
-    `);
-
-    // Insert dogs
-    await db.execute(`
-      INSERT INTO Dogs (owner_id, name, size) VALUES
-      (1, 'Max', 'medium'),
-      (2, 'Bella', 'small'),
-      (1, 'Rocky', 'large')
-    `);
-
-    // Insert walk requests (some open, some completed)
-    await db.execute(`
-      INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status) VALUES
-      (1, '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
-      (2, '2025-06-10 09:00:00', 45, 'Downtown Park', 'open'),
-      (1, '2025-06-08 10:00:00', 30, 'Beach Walk', 'completed'),
-      (3, '2025-06-09 15:00:00', 60, 'Mountain Trail', 'completed')
-    `);
-
-    // Insert some walk applications
-    await db.execute(`
-      INSERT INTO WalkApplications (request_id, walker_id, status) VALUES
-      (3, 3, 'accepted'),
-      (4, 3, 'accepted')
-    `);
-
-    // Insert some ratings for completed walks
-    await db.execute(`
-      INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES
-      (3, 3, 1, 5, 'Excellent walker!'),
-      (4, 3, 1, 4, 'Very good service')
-    `);
-
-    console.log('Database setup complete with sample data');
+    console.log('Database setup complete');
 
   } catch (err) {
     console.error('Error setting up database. Ensure MySQL is running: service mysql start', err);
