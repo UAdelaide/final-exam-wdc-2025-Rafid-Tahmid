@@ -128,18 +128,6 @@ let db;
         (3, '2025-06-10 10:00:00', 30, 'Adelaide', 'open'),
         (4, '2025-06-10 11:00:00', 45, 'Gilles Park', 'accepted'),
       `);
-
-      await db.execute(`
-        INSERT INTO WalkApplications (request_id, walker_id, status) VALUES
-        (3, 3, 'accepted'),
-        (4, 3, 'accepted')
-      `);
-
-      await db.execute(`
-        INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES
-        (3, 3, 1, 5, 'Excellent walker!'),
-        (4, 3, 1, 4, 'Very good service')
-      `);
     }
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
