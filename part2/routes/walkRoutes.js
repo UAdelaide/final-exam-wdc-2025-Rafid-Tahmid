@@ -64,7 +64,8 @@ router.post('/:id/apply', async (req, res) => {
 router.get('/my-dogs', async (req, res) => {
   try{
     const owner_id = req.session?.user?.user_id;
-    if (!owner_id) {
+    const role = req.session?.user?.role;
+    if (!owner_id || role !== 'owner') {
       return res.status(401).json({ error: 'Unauthorized' });
     }
     const[rows]=await db.query(`
