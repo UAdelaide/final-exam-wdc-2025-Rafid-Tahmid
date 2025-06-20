@@ -59,4 +59,7 @@ router.post('/:id/apply', async (req, res) => {
   }
 });
 
+
+//Get dogs for the logged-
+
 module.exports = router;
