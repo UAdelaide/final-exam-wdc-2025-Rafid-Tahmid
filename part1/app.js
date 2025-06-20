@@ -149,6 +149,18 @@ let db;
 
 // API Endpoints
 
+// Root route - Show available endpoints
+app.get('/', (req, res) => {
+  res.json({
+    message: "Dog Walking Service API",
+    endpoints: {
+      dogs: "/api/dogs",
+      openWalkRequests: "/api/walkrequests/open",
+      walkersSummary: "/api/walkers/summary"
+    }
+  });
+});
+
 // /api/dogs - Return all dogs with their size and owner's username
 app.get('/api/dogs', async (req, res) => {
   try {
