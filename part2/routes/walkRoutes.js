@@ -68,8 +68,10 @@ router.get('/my-dogs', async (req, res) => {
       FROM Dogs d
       JOIN Users u ON d.owner_id = u.user_id
       WHERE u.role='owner'
-      ORDER 
-      `)
+      ORDER BY d.name
+      `);
+      res.json(rows);
+    }
   }
 
 module.exports = router;
