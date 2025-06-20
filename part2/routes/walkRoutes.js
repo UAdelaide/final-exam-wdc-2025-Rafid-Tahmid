@@ -63,7 +63,9 @@ router.post('/:id/apply', async (req, res) => {
 //Get dogs for the logged-in owner
 router.get('/my-dogs', async (req, res) => {
   try{
-    const[rows]
+    const[rows]-await this.delete('
+      
+      ')
   }
 
 module.exports = router;
