@@ -54,9 +54,9 @@ router.post('/login', async (req, res) => {
     // Store user in session
     req.session.user = rows[0];
 
-    res.json({ message: 'Login successful', user: rows[0] });
+    return res.json({ message: 'Login successful', user: rows[0] });
   } catch (error) {
-    res.status(500).json({ error: 'Login failed' });
+    return res.status(500).json({ error: 'Login failed' });
   }
 });
 
@@ -66,7 +66,7 @@ router.post('/logout', (req, res) => {
     if (err) {
       return res.status(500).json({ error: 'Logout failed' });
     }
-    res.json({ message: 'Logout successful' });
+   return res.json({ message: 'Logout successful' });
   });
 });
 
