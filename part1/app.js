@@ -164,7 +164,6 @@ app.get('/api/dogs', async (req, res) => {
   }
 });
 
-// /api/walkrequests/open - Return all open walk requests with details
 app.get('/api/walkrequests/open', async (req, res) => {
   try {
     const [requests] = await db.execute(`
@@ -183,7 +182,6 @@ app.get('/api/walkrequests/open', async (req, res) => {
   }
 });
 
-// /api/walkers/summary - Return walker summary with ratings and completed walks
 app.get('/api/walkers/summary', async (req, res) => {
   try {
     const [walkers] = await db.execute(`
