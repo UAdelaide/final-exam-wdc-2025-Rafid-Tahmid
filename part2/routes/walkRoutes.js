@@ -63,7 +63,7 @@ router.post('/:id/apply', async (req, res) => {
 //Get dogs for the logged-in owner
 router.get('/my-dogs', async (req, res) => {
   try{
-    const[rows]=await this.delete('
+    const[rows]=await db.query('
       SELECT dog_id, name, size
       FROM Dogs d
       JOIN Users u ON d.owner_id = u.user_id
