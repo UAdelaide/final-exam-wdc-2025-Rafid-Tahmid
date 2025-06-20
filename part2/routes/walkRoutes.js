@@ -65,12 +65,8 @@ router.get('/my-dogs', async (req, res) => {
   try{
     const[rows]-await this.delete('
       SELECT dog_id, name, size
-      
-      ', [req.session.user.user_id]);
-    res.json(rows);
-  } catch (error) {
-    console.error('SQL Error:', error);
-    res.status(500).json({ error: 'Failed to fetch dogs' });
+      FROM 
+      ')
   }
 
 module.exports = router;
