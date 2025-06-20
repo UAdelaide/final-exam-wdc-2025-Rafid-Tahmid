@@ -13,6 +13,34 @@
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
 
+    <!-- Login Form -->
+    <div v-if="!isLoggedIn" class="card mb-4">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Login to Your Account</h5>
+      </div>
+      <div class="card-body">
+        <form @submit.prevent="login">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input v-model="loginForm.email" type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input v-model="loginForm.password" type="password" class="form-control" id="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary" :disabled="isLoading">
+            {{ isLoading ? 'Logging in...' : 'Login' }}
+          </button>
+        </form>
+        <div v-if="loginError" class="alert alert-danger mt-3">{{ loginError }}</div>
+      </div>
+    </div>
+
+    <!-- Welcome message for logged in users -->
+    <div v-if="isLoggedIn" class="alert alert-success">
+      Welcome back, {{ currentUser.username }}! You are logged in as {{ currentUser.role }}.
+    </div>
+
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
   </div>
@@ -22,8 +50,67 @@
     createApp({
       data() {
         return {
-          message: 'Welcome to the Dog Walking Service!'
+          message: 'Welcome to the Dog Walking Service!',
+          isLoggedIn: false,
+          currentUser: null,
+          isLoading: false,
+          loginError: '',
+          loginForm: {
+            email: '',
+            password: ''
+          }
         };
+      },
+      async mounted() {
+        await this.checkLoginStatus();
+      },
+      methods: {
+        async checkLoginStatus() {
+          try {
+            const response = await fetch('/api/users/me');
+            if (response.ok) {
+              this.currentUser = await response.json();
+              this.isLoggedIn = true;
+            }
+          } catch (error) {
+            console.log('Not logged in');
+          }
+        },
+        async login() {
+          this.isLoading = true;
+          this.loginError = '';
+
+          try {
+            const response = await fetch('/api/users/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(this.loginForm)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              this.currentUser = data.user;
+              this.isLoggedIn = true;
+              this.loginForm = { email: '', password: '' };
+
+              // Redirect based on user role
+              if (data.user.role === 'owner') {
+                window.location.href = 'owner-dashboard.html';
+              } else if (data.user.role === 'walker') {
+                window.location.href = 'walker-dashboard.html';
+              }
+            } else {
+              this.loginError = data.error || 'Login failed';
+            }
+          } catch (error) {
+            this.loginError = 'An error occurred during login';
+          } finally {
+            this.isLoading = false;
+          }
+        }
       }
     }).mount('#app');
   </script>
