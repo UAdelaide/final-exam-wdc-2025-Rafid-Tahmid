@@ -64,11 +64,11 @@ router.post('/:id/apply', async (req, res) => {
 router.get('/my-dogs', async (req, res) => {
   try{
     const[rows]=await db.query(`
-       SELECT dog_id, name, size
+      SELECT dog_id, name, size
       FROM Dogs d
       JOIN Users u ON d.owner_id = u.user_id
       WHERE u.role='owner'
-      Order
+      ORDER 
       `)
   }
 
