@@ -135,6 +135,7 @@ let db;
         (3, 3, 1, 5, 'Excellent walker!'),
         (4, 3, 1, 4, 'Very good service')
       `);
+      console.log('Sample data inserted successfully');
     }
   } catch (err) {
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
