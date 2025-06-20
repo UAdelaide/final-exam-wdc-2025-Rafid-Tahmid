@@ -19,15 +19,13 @@ let db;
     const connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '' /
+      password: ''
     });
 
-    // Create the database if it doesn't exist (from the SQL file)
     await connection.query('DROP DATABASE IF EXISTS DogWalkService');
     await connection.query('CREATE DATABASE DogWalkService');
     await connection.end();
 
-    // Now connect to the created database
     db = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
@@ -35,7 +33,6 @@ let db;
       database: 'DogWalkService'
     });
 
-    // Create tables from the SQL schema
     await db.execute(`
       CREATE TABLE Users (
         user_id INT AUTO_INCREMENT PRIMARY KEY,
