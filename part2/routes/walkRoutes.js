@@ -64,6 +64,9 @@ router.post('/:id/apply', async (req, res) => {
 router.get('/my-dogs', async (req, res) => {
   try{
     const owner_id = req.session?.user_id;
+    if(!owner_id){
+      return res.status(401).json({error:'Unauthorized'});
+    }
     const[rows]=await db.query(`
       SELECT dog_id, name, size
       FROM Dogs d
