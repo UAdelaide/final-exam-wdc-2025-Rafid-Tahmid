@@ -145,6 +145,8 @@
           try {
             const res = await fetch('/api/walks/my-dogs');
             myDogs.value = await res.json();
+          } catch (err) {
+            error.value
           }
         }
 
