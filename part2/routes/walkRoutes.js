@@ -60,6 +60,6 @@ router.post('/:id/apply', async (req, res) => {
 });
 
 
-//Get dogs for the logged-
+//Get dogs for the logged-in owner
 
 module.exports = router;
