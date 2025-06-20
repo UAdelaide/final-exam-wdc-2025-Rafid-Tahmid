@@ -49,7 +49,17 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    res.json({ message: 'Login successful', user: rows[0] });
+    // Store user in session
+    req.session.user = rows[0];
+
+    // Redirect based on role
+    if (rows[0].role === 'owner') {
+      res.redirect('/owner-dashboard.html');
+    } else if (rows[0].role === 'walker') {
+      res.redirect('/walker-dashboard.html');
+    } else {
+      res.json({ message: 'Login successful', user: rows[0] });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Login failed' });
   }
