@@ -126,8 +126,8 @@ let db;
         (2, '2025-06-10 09:00:00', 45, 'Downtown Park', 'open'),
         (1, '2025-06-08 10:00:00', 30, 'Beach Walk', 'completed'),
         (3, '2025-06-09 15:00:00', 60, 'Mountain Trail', 'completed'),
-        (4, '2025-06-10 10:00:00', 30, 'Parklands', 'open'),
-        (5, '2025-06-10 11:00:00', 45, 'Downtown Park', 'open'),
+        (4, '2025-06-10 10:00:00', 30, 'Adelaide', 'open'),
+        (5, '2025-06-10 11:00:00', 45, 'Gilles Park', 'open'),
         (4, '2025-06-08 12:00:00', 30, 'Beach Walk', 'completed'),
         (5, '2025-06-09 13:00:00', 60, 'Mountain Trail', 'completed')
       `);
