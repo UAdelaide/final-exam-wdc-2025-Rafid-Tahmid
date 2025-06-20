@@ -66,7 +66,8 @@ router.get('/my-dogs', async (req, res) => {
     const[rows]-await this.delete('
       SELECT dog_id, name, size
       FROM Dogs d
-      JOIN User
+      JOIN Users u ON d.owner_id = u.user_id
+      WHERE u.role=
       ')
   }
 
