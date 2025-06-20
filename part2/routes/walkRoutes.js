@@ -60,7 +60,7 @@ router.post('/:id/apply', async (req, res) => {
 });
 
 
-//Get dogs for the logged-in owner
+// Get dogs for the logged-in owner
 router.get('/my-dogs', async (req, res) => {
   try{
     const[rows]=await db.query(`
@@ -75,6 +75,6 @@ router.get('/my-dogs', async (req, res) => {
       console.error('SQL Error:', error);
       res.status(500).json({ error: 'Failed to fetch dogs' });
     }
-  }
+  });
 
 module.exports = router;
