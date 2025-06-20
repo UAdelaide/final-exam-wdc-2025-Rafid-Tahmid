@@ -114,6 +114,9 @@ let db;
         INSERT INTO Dogs (owner_id, name, size) VALUES
         (1, 'Max', 'medium'),
         (2, 'Bella', 'small'),
+        (1, 'Rocky', 'large'),
+                (1, 'Max', 'medium'),
+        (2, 'Bella', 'small'),
         (1, 'Rocky', 'large')
       `);
 
