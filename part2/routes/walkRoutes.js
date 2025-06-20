@@ -61,6 +61,7 @@ router.post('/:id/apply', async (req, res) => {
 
 
 //Get dogs for the logged-in owner
-router.get
+router.get('/my-dogs', async (req, res) => {
+  try
 
 module.exports = router;
