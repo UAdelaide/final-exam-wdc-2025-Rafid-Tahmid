@@ -5,48 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Walking Service - Dog of the Day</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <style>
+        <style>
         body {
-            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00, #ff00ff);
-            background-size: 400% 400%;
-            animation: rainbow 2s ease-in-out infinite alternate;
+            background-color: #ff0000;
             color: #ffff00;
-            font-family: Comic Sans MS;
+            font-family: Times;
+            font-size: 8px;
         }
 
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        h1 {
-            animation: bounce 1s infinite;
-            color: #ff0000;
-            text-shadow: 2px 2px #00ff00;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .tiny-button {
-            width: 8px;
-            height: 8px;
-            font-size: 4px;
-            padding: 1px;
-            margin: 200px 0;
-        }
-
-        .far-apart {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        button {
+            width: 10px;
+            height: 10px;
+            font-size: 6px;
         }
 
         #dog-container {
-            margin-top: 300px;
-            margin-left: 500px;
+            margin-left: 400px;
         }
     </style>
 </head>
@@ -63,10 +37,7 @@
                 <p><strong>Breed:</strong> Golden Retriever</p>
                 <p><strong>Age:</strong> 3 years old</p>
                 <p><strong>Personality:</strong> Friendly, energetic, loves belly rubs</p>
-                <button type="button" @click="fetchDogImage" class="tiny-button">New</button>
-                <div class="far-apart">
-                    <button type="button" style="width: 5px; height: 5px; font-size: 2px;">X</button>
-                </div>
+                <button type="button" @click="fetchDogImage">New Dog</button>
             </div>
         </div>
     </div>
