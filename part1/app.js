@@ -115,9 +115,9 @@ let db;
         (1, 'Max', 'medium'),
         (2, 'Bella', 'small'),
         (1, 'Rocky', 'large'),
-                (1, 'Max', 'medium'),
-        (2, 'Bella', 'small'),
-        (1, 'Rocky', 'large')
+        (1, 'Maxy', 'medium'),
+        (2, 'Bellahadid', 'small'),
+        (1, 'Rockyhd', 'large')
       `);
 
       await db.execute(`
