@@ -63,17 +63,16 @@ router.post('/:id/apply', async (req, res) => {
 // Get dogs for the logged-in owner
 router.get('/my-dogs', async (req, res) => {
   try{
-    const owner_id = req.session?.user_id;
+    const owner_id = req.session?.user?.user_id;
     if(!owner_id){
       return res.status(401).json({error:'Unauthorized'});
     }
     const[rows]=await db.query(`
       SELECT dog_id, name, size
       FROM Dogs d
-      JOIN Users u ON d.owner_id = u.user_id
-      WHERE u.role='owner'
+      WHERE d.owner_id = ?
       ORDER BY d.name
-      `);
+      `, [owner_id]);
       res.json(rows);
     } catch (error) {
       console.error('SQL Error:', error);
