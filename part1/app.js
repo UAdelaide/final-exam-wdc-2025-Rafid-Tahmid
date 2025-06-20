@@ -149,7 +149,6 @@ let db;
 
 // API Endpoints
 
-// /api/dogs - Return all dogs with their size and owner's username
 app.get('/api/dogs', async (req, res) => {
   try {
     const [dogs] = await db.execute(`
