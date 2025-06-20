@@ -117,7 +117,7 @@ let db;
         (1, 'Rocky', 'large'),
         (1, 'Maxy', 'medium'),
         (2, 'Bellahadid', 'small'),
-        (1, 'Rockyhd', 'large')
+        (1, 'Rockyhd', 'large'),
       `);
 
       await db.execute(`
