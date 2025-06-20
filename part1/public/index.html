@@ -13,5 +13,30 @@
             <p>Loading dog picture...</p>
         </div>
     </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    dogImage: '',
+                    loading: true
+                }
+            },
+            mounted() {
+                this.fetchDogImage();
+            },
+            methods: {
+                async fetchDogImage() {
+                    // Fetch random dog image from Dog API
+                    const response = await fetch('https://dog.ceo/api/breeds/image/random');
+                    const data = await response.json();
+                    this.dogImage = data.message;
+                    this.loading = false;
+                }
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>
