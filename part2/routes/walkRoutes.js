@@ -71,6 +71,9 @@ router.get('/my-dogs', async (req, res) => {
       ORDER BY d.name
       `);
       res.json(rows);
+    } catch (error) {
+      console.error('SQL Error:', error);
+      res.status(500).json({ error: 'Failed to fetch dogs' });
     }
   }
 
