@@ -149,6 +149,15 @@ let db;
 
 // API Endpoints
 
+// Root route to return basic service info as JSON (following starthere pattern)
+app.get('/', async (req, res) => {
+  try {
+    res.json({ message: "Dog Walking Service API", status: "running" });
+  } catch (err) {
+    res.status(500).json({ error: 'Service error' });
+  }
+});
+
 app.get('/api/dogs', async (req, res) => {
   try {
     const [dogs] = await db.execute(`
