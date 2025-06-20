@@ -118,6 +118,24 @@
           }
         }
 
+        async function logout() {
+          try {
+            const res = await fetch('/api/users/logout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (res.ok) {
+              // Redirect to login page
+              window.location.href = '/';
+            } else {
+              error.value = 'Logout failed';
+            }
+          } catch (err) {
+            error.value = 'Logout failed';
+          }
+        }
+
         onMounted(() => {
           loadWalks();
         });
@@ -127,7 +145,8 @@
           walks,
           message,
           error,
-          submitWalkRequest
+          submitWalkRequest,
+          logout
         };
       }
     }).mount('#app');
