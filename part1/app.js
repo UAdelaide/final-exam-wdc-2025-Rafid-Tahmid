@@ -125,8 +125,8 @@ let db;
         (1, '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
         (2, '2025-06-10 09:00:00', 45, 'Beachside Ave', 'accepted'),
         (1, '2025-06-08 10:00:00', 30, 'Beach Walk', 'open'),
-        (4, '2025-06-10 10:00:00', 30, 'Adelaide', 'open'),
-        (5, '2025-06-10 11:00:00', 45, 'Gilles Park', 'open'),
+        (3, '2025-06-10 10:00:00', 30, 'Adelaide', 'open'),
+        (4, '2025-06-10 11:00:00', 45, 'Gilles Park', 'accepted'),
       `);
 
       await db.execute(`
