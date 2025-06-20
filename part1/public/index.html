@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Walking Service - Dog of the Day</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00, #ff00ff);
+            background-size: 400% 400%;
+            animation: rainbow 2s ease-in-out infinite alternate;
+            color: #ffff00;
+            font-family: Comic Sans MS;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        h1 {
+            animation: bounce 1s infinite;
+            color: #ff0000;
+            text-shadow: 2px 2px #00ff00;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
 </head>
 <body>
     <div id="app">
