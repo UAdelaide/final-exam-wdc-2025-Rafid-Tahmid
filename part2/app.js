@@ -14,6 +14,12 @@ const userRoutes = require('./routes/userRoutes');
 
 app.use('/api/walks', walkRoutes);
 app.use('/api/users', userRoutes);
-
+connects to DogWalkService
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  database: 'DogWalkService',  // ← Same database name
+  // ...
+});
 // Export the app instead of listening here
 module.exports = app;
