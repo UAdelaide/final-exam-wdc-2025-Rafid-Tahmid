@@ -41,7 +41,9 @@
       Welcome back, {{ currentUser.username }}! You are logged in as {{ currentUser.role }}.
     </div>
 
-    <div v
+    <div v-if = "isLoggedIn">
+      
+    </div>
 
   <script>
     const { createApp } = Vue;
