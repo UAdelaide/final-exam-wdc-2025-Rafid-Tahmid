@@ -58,7 +58,7 @@
         }
         async function getCurrentUser() {
           try{
-            const res = await fetch('/api/users/current');
+            const res = await fetch('/api/users/me');
             if(!res.ok) throw new Error('Failed to get current user');
             const user = await res.json();
             return user.user_id;
@@ -74,7 +74,7 @@
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ walker_id: user })
+              body: JSON.stringify({ walker_id: walker_id })
             });
             const result = await res.json();
 
