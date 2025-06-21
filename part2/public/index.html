@@ -159,7 +159,13 @@
             this.isLoading = false;
           }
         }
-        
+        async loadDogs() {
+  this.loadingDogs = true;
+  try {
+    const response = await fetch('/api/dogs');
+    if (response.ok) {
+      this.dogs = await response.json();
+      
       }
     }).mount('#app');
   </script>
