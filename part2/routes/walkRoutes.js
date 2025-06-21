@@ -24,14 +24,23 @@ router.post('/', async (req, res) => {
   const { dog_id, requested_time, duration_minutes, location } = req.body;
 
   try {
+    // Validate required fields
+    if (!dog_id || !requested_time || !duration_minutes || !location) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    // Convert datetime-local format to MySQL datetime format
+    const mysqlDateTime = new Date(requested_time).toISOString().slice(0, 19).replace('T', ' ');
+
     const [result] = await db.query(`
       INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location)
       VALUES (?, ?, ?, ?)
-    `, [dog_id, requested_time, duration_minutes, location]);
+    `, [dog_id, mysqlDateTime, duration_minutes, location]);
 
     res.status(201).json({ message: 'Walk request created', request_id: result.insertId });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create walk request' });
+    console.error('Walk request creation error:', error);
+    res.status(500).json({ error: 'Failed to create walk request: ' + error.message });
   }
 });
 
