@@ -46,6 +46,10 @@
       <a v-if="currentUser.role==='walker'" href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
     </div>
 
+    <div v-if="isLoggedIn">
+      <a
+    </div>
+
   <script>
     const { createApp } = Vue;
     createApp({
