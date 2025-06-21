@@ -61,7 +61,8 @@
           try{
             const res = await fetch('/api/users/current');
             if(!res.ok) throw new Error('Failed to get current user');
-            const usr
+            const user = await res.json();
+            return user.u
 
           }
         }
