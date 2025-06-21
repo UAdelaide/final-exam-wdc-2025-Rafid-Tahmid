@@ -64,7 +64,8 @@
             const user = await res.json();
             return user.user_id;
           } catch (err) {
-            console.error('')
+            console.error('Error getting current user:', err);
+            throw err;
           }
         }
 
