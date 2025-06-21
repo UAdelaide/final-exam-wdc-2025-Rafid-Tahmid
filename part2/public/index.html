@@ -165,8 +165,28 @@
     const response = await fetch('/api/dogs');
     if (response.ok) {
       this.dogs = await response.json();
-      
+            // Fetch random dog photos for each dog
+            for (let dog of this.dogs) {
+        try {
+          const photoResponse = await fetch('https://dog.ceo/api/breeds/image/random');
+          if (photoResponse.ok) {
+            const photoData = await photoResponse.json();
+            dog.photoUrl = photoData.message;
+          }
+      }       } catch (error) {
+          console.error(`Failed to fetch photo for ${dog.name}:`, error);
+          dog.photoUrl = null;
+        }
       }
+    } else {
+      console.error('Failed to fetch dogs');
+    }
+  } catch (error) {
+    console.error('Error loading dogs:', error);
+  } finally {
+    this.loadingDogs = false;
+  }
+}
     }).mount('#app');
   </script>
 
