@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <!-- Welcome message for logged in users
+    <!-- Welcome message for logged in users -->
     <div v-if="isLoggedIn" class="alert alert-success">
       Welcome back, {{ currentUser.username }}! You are logged in as {{ currentUser.role }}.
     </div>
@@ -44,7 +44,6 @@
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
   </div>
-   -->
 
   <script>
     const { createApp } = Vue;
@@ -61,7 +60,7 @@
             password: ''
           },
           dogs: [],
-          loadingDogs: false
+          loadingDogs: false,
         };
       },
       async mounted() {
